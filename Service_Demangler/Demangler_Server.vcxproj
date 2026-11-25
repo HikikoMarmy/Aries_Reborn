@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{47FB9727-B503-53CC-BF0D-0E1CF748DFC3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Demangler_Server</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <Import Project="$(SolutionDir)Aries.Build.props" />
+  <PropertyGroup>
+    <OutDir>$(AriesBinRoot)\modules\</OutDir>
+    <IntDir>$(AriesBuildRoot)\$(ProjectName)\$(Configuration)\</IntDir>
+    <TargetName>Demangler_Server</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Aries_Common;$(SolutionDir)Aries_Module_API;$(AriesTripletRoot)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NOMINMAX;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)'=='Debug'">$(AriesTripletRoot)\debug\lib;$(AriesLibRoot);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)'!='Debug'">$(AriesTripletRoot)\lib;$(AriesLibRoot);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sqlite3.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImportLibrary>$(AriesLibRoot)\Demangler_Server.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(AriesBinRoot)\modules\Demangler_Server.pdb</ProgramDatabaseFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="module\demangler_module.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aries_Common\Aries_Common.vcxproj">
+      <Project>{0045E9AB-A8A0-5022-80C4-2D455DD64F23}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Aries_Module_API\Aries_Module_API.vcxproj">
+      <Project>{A39B3422-FEBF-50C9-93AE-4AE7E47F0598}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

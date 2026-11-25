@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0045E9AB-A8A0-5022-80C4-2D455DD64F23}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Aries_Common</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <Import Project="$(SolutionDir)Aries.Build.props" />
+  <PropertyGroup>
+    <OutDir>$(AriesLibRoot)\</OutDir>
+    <IntDir>$(AriesBuildRoot)\$(ProjectName)\$(Configuration)\</IntDir>
+    <TargetName>Aries_Common</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Aries_Module_API;$(AriesTripletRoot)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NOMINMAX;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Lib>
+      <AdditionalLibraryDirectories>$(AriesTripletRoot)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="configuration.cpp" />
+    <ClCompile Include="global_define.cpp" />
+    <ClCompile Include="crypto\password_hash.cpp" />
+    <ClCompile Include="crypto\ssc2.cpp" />
+    <ClCompile Include="database\database.cpp" />
+    <ClCompile Include="demangler\demangler_server.cpp" />
+    <ClCompile Include="game\client.cpp" />
+    <ClCompile Include="game\client_manager.cpp" />
+    <ClCompile Include="metadata\game_metadata.cpp" />
+    <ClCompile Include="module\game_module_runtime.cpp" />
+    <ClCompile Include="network\aries_packet.cpp" />
+    <ClCompile Include="network\buddy_protocol.cpp" />
+    <ClCompile Include="network\game_protocol.cpp" />
+    <ClCompile Include="network\lobby_protocol.cpp" />
+    <ClCompile Include="network\network_util.cpp" />
+    <ClCompile Include="network\packet_control.cpp" />
+    <ClCompile Include="network\socket_manager.cpp" />
+    <ClCompile Include="server\server.cpp" />
+    <ClCompile Include="ui\logging.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="configuration.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="global_define.h" />
+    <ClInclude Include="platform\socket_compat.h" />
+    <ClInclude Include="database\database.h" />
+    <ClInclude Include="ui\logging.h" />
+    <ClInclude Include="network\socket_struct.h" />
+    <ClInclude Include="network\aries_commands.h" />
+    <ClInclude Include="network\network_util.h" />
+    <ClInclude Include="network\packet_control.h" />
+    <ClInclude Include="network\lobby_protocol.h" />
+    <ClInclude Include="network\buddy_protocol.h" />
+    <ClInclude Include="network\socket_manager.h" />
+    <ClInclude Include="network\aries_packet.h" />
+    <ClInclude Include="network\game_protocol.h" />
+    <ClInclude Include="server\server.h" />
+    <ClInclude Include="crypto\ssc2.h" />
+    <ClInclude Include="crypto\password_hash.h" />
+    <ClInclude Include="demangler\demangler_server.h" />
+    <ClInclude Include="metadata\game_metadata.h" />
+    <ClInclude Include="game\client.h" />
+    <ClInclude Include="game\client_manager.h" />
+    <ClInclude Include="misc\types.h" />
+    <ClInclude Include="module\game_module_runtime.h" />
+    <ClInclude Include="module\module_util.h" />
+    <ClInclude Include="common\threadsafe_queue.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dependencies\Dependencies.vcxproj">
+      <Project>{DF3F4086-53FF-5398-A3FD-3ECD6DC906AD}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <ProjectReference Include="..\Aries_Module_API\Aries_Module_API.vcxproj">
+      <Project>{A39B3422-FEBF-50C9-93AE-4AE7E47F0598}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="configuration.cpp" />
+    <ClCompile Include="global_define.cpp" />
+    <ClCompile Include="crypto\password_hash.cpp" />
+    <ClCompile Include="crypto\ssc2.cpp" />
+    <ClCompile Include="database\database.cpp" />
+    <ClCompile Include="demangler\demangler_server.cpp" />
+    <ClCompile Include="game\client.cpp" />
+    <ClCompile Include="game\client_manager.cpp" />
+    <ClCompile Include="metadata\game_metadata.cpp" />
+    <ClCompile Include="module\game_module_runtime.cpp" />
+    <ClCompile Include="network\aries_packet.cpp" />
+    <ClCompile Include="network\buddy_protocol.cpp" />
+    <ClCompile Include="network\game_protocol.cpp" />
+    <ClCompile Include="network\lobby_protocol.cpp" />
+    <ClCompile Include="network\network_util.cpp" />
+    <ClCompile Include="network\packet_control.cpp" />
+    <ClCompile Include="network\socket_manager.cpp" />
+    <ClCompile Include="server\server.cpp" />
+    <ClCompile Include="ui\logging.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="configuration.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="global_define.h" />
+    <ClInclude Include="platform\socket_compat.h" />
+    <ClInclude Include="database\database.h" />
+    <ClInclude Include="ui\logging.h" />
+    <ClInclude Include="network\socket_struct.h" />
+    <ClInclude Include="network\aries_commands.h" />
+    <ClInclude Include="network\network_util.h" />
+    <ClInclude Include="network\packet_control.h" />
+    <ClInclude Include="network\lobby_protocol.h" />
+    <ClInclude Include="network\buddy_protocol.h" />
+    <ClInclude Include="network\socket_manager.h" />
+    <ClInclude Include="network\aries_packet.h" />
+    <ClInclude Include="network\game_protocol.h" />
+    <ClInclude Include="server\server.h" />
+    <ClInclude Include="crypto\ssc2.h" />
+    <ClInclude Include="crypto\password_hash.h" />
+    <ClInclude Include="demangler\demangler_server.h" />
+    <ClInclude Include="metadata\game_metadata.h" />
+    <ClInclude Include="game\client.h" />
+    <ClInclude Include="game\client_manager.h" />
+    <ClInclude Include="misc\types.h" />
+    <ClInclude Include="module\game_module_runtime.h" />
+    <ClInclude Include="module\module_util.h" />
+    <ClInclude Include="common\threadsafe_queue.hpp" />
+  </ItemGroup>
+</Project>
